@@ -1,40 +1,29 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=5819867&assignment_repo_type=AssignmentRepo)
 # W03
 
-下图中有一些泡泡
-
-![](https://raw.githubusercontent.com/jwork-2021/jw03/main/example/resources/bubble.jpeg)
+**191220144 尹凯**
 
 
-下图中也有一些泡泡
 
-![](https://raw.githubusercontent.com/jwork-2021/jw03/main/example.BubbleSorter.png)
+### 对代码工作原理的理解
 
-这两张图你看得出区别么？你应该是看不出来的。但其实两张图并不一样，后者为一张“隐写术图”（[Steganography](https://zh.wikipedia.org/zh/隐写术))。
+过程：Java编译器将源代码编译成字节码；SteganographyEncoder类负责将字节码编码进所选择的图片中。运行时，通过对应的Decoder类进行解码，loadClass方法通过向上委托向下查找的原则进行搜索，所以只有在没有搜到同名类的情况下才会调用SteganographyClassLoader来解码，将其解码成类对象运行。
 
-我将一个实现冒泡排序的BubbleSorter类的字节码编码进了第一张泡泡图片中，得到了第二张图。为了方便起见，图片被放置在`"https://cdn.njuics.cn/example.BubbleSorter.png`这个地方。
+### 两个图片的URL
 
-然后`W02`中的`Scene.main()`中的代码即可进行改写：
+快速排序
 
-```java
-...
-    Geezer theGeezer = Geezer.getTheGeezer();
+![](https://github.com/jwork-2021/jw03-VtopLiver/blob/main/example.QuickSort.png?raw=true)
 
-    SteganographyClassLoader loader = new SteganographyClassLoader(
-            new URL("https://cdn.njuics.cn/example.BubbleSorter.png"));
+选择排序
 
-    Class c = loader.loadClass("example.BubbleSorter");
+![](https://github.com/jwork-2021/jw03-VtopLiver/blob/main/example.SelectSorter.png?raw=true)
 
-    Sorter sorter = (Sorter) c.newInstance();
+### 两个动画的链接
 
-    theGeezer.setSorter(sorter);
-...
-```
+选择排序:https://asciinema.org/a/xObtTcIJWaBCzLQZv8CkuD2L5
+快速排序:https://asciinema.org/a/Omouj6OGJT81Ofo5giZnCdL0R
 
-请尝试运行example（注意`lib`目录下存在一个jar文件，需要被包含在工程的classpath中）仔细阅读example中的代码，理解其含义，撰写一个markdown文件，完成以下任务：
+### 联系另一位同学
 
-1. 写下对代码工作原理的理解；
-2. 将自己在`W02`中实现的两个排序算法（冒泡排序除外）分别编码进自选图片得到隐写术图，在markdown中给出两个图片的URL；
-3. 用你的图片给`W02`中example的老头赋予排序能力，得到排序结果（动画），上传动画到asciinema，在markdown中给出两个动画的链接。
-4. 联系另一位同学，用他的图片给`W02`中example的老头赋予排序能力，在markdown中记录你用的谁的图片，得到结果是否正确。
-
+我使用了张峻同学的QuickSorter图片，结果正确，对应目录里QuickSorter.png
